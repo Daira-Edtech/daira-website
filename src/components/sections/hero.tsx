@@ -1,11 +1,6 @@
 import React from 'react';
 import { Star, PlayCircle } from 'lucide-react';
 
-/**
- * Hero component for Claura AI Agency website.
- * Features: 5-star rating, hero headline, descriptive subtext, dual CTA buttons,
- * and a decorative dot grid pattern background.
- */
 const Hero = () => {
   return (
     <section 
@@ -58,11 +53,26 @@ const Hero = () => {
           </button>
         </div>
 
-        {/* Decorative Dot Grid Pattern */}
-        <div className="mt-20 w-full max-w-[1000px] aspect-[1008/325] opacity-20 pointer-events-none select-none">
-          <div className="grid grid-cols-[repeat(25,1fr)] grid-rows-[repeat(10,1fr)] gap-8 w-full h-full justify-items-center content-center">
-            {[...Array(250)].map((_, i) => (
-              <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#2D241E]"></div>
+        {/* Animated Gradient Dot Grid */}
+        <div className="mt-20 w-full max-w-[1100px] aspect-[1100/500] relative rounded-[32px] overflow-hidden">
+          {/* Gradient Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#FFE4CC] via-[#87CEEB] to-[#B0C4DE] opacity-90"></div>
+          
+          {/* Animated Glow Effects */}
+          <div className="absolute top-[20%] left-[40%] w-[300px] h-[300px] bg-gradient-radial from-[#FF6B6B] via-[#FFD93D] to-transparent opacity-60 blur-[80px] animate-pulse"></div>
+          <div className="absolute top-[30%] right-[35%] w-[250px] h-[250px] bg-gradient-radial from-[#FF8C94] via-[#FFA07A] to-transparent opacity-50 blur-[60px] animate-pulse delay-500"></div>
+          
+          {/* Dot Grid Overlay */}
+          <div className="absolute inset-0 grid grid-cols-[repeat(24,1fr)] grid-rows-[repeat(8,1fr)] gap-6 p-8">
+            {[...Array(192)].map((_, i) => (
+              <div 
+                key={i} 
+                className="w-2 h-2 rounded-full bg-white/60"
+                style={{
+                  animation: `pulse ${2 + (i % 3)}s ease-in-out infinite`,
+                  animationDelay: `${(i % 10) * 0.1}s`
+                }}
+              ></div>
             ))}
           </div>
         </div>
@@ -73,12 +83,6 @@ const Hero = () => {
             Brands we&apos;ve helped implement AI:
           </p>
         </div>
-      </div>
-
-      {/* Background soft glow effect */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none">
-        <div className="absolute top-[20%] left-[30%] w-[400px] h-[400px] bg-[#A48D7F] opacity-10 blur-[120px] rounded-full"></div>
-        <div className="absolute bottom-[20%] right-[30%] w-[300px] h-[300px] bg-[#EAE0D5] opacity-20 blur-[100px] rounded-full"></div>
       </div>
     </section>
   );

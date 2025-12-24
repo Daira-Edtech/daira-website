@@ -1,14 +1,5 @@
 import React from 'react';
 
-/**
- * Navbar component for Claura website.
- * Features:
- * - Left-aligned links: About, Case Studies, News
- * - Centered Logo: Claura (Serif font)
- * - Right-aligned CTA: Book a free call
- * - Sticky positioning with glassmorphism / transparent background consistency.
- */
-
 const Navbar = () => {
   return (
     <div className="sticky top-0 left-0 right-0 z-[100] w-full flex justify-center">
@@ -45,15 +36,17 @@ const Navbar = () => {
           {/* Center: Logo */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <a href="/" className="inline-block">
-              <h3 
-                className="text-[24px] font-semibold text-[#2B180A]"
-                style={{ 
-                  fontFamily: '"Instrument Serif", serif',
-                  letterSpacing: '-0.02em' 
-                }}
-              >
-                Claura
-              </h3>
+           
+           <h3 
+  className="font-halant text-[42px] font-normal text-[#2B180A]"
+  style={{ 
+    letterSpacing: '-0.02em' 
+  }}
+>
+  Claura
+</h3>
+
+           
             </a>
           </div>
 

@@ -1,86 +1,86 @@
 "use client";
 
 import React, { useState } from "react";
-import { Plus, Minus } from "lucide-react";
+import { Plus, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const faqData = [
   {
-    question: "Do I need technical knowledge to work with you?",
+    question: "What makes Daira different from other EdTech companies?",
     answer:
-      "No. We handle all the technical work from start to finish. You just need to share how your business operates, and we take care of the rest.",
+      "We're an R&D lab, not a typical startup. We focus on sectors where technology hasn't reached — inclusive education, rural access, and policy enablement. We build with government partnerships from day one, ensuring our solutions can scale through public systems, not just private markets.",
   },
   {
-    question: "How long does it take to see results?",
+    question: "Do you only work in education?",
     answer:
-      "Most clients see measurable results within 45 days. We focus on quick wins first, then build on that foundation over time.",
+      "We started with inclusive education because it's one of the most underserved sectors. But our R&D capabilities extend to any domain where technology and social impact intersect — from cultural preservation (Sanskriti Suraksha) to agricultural AI (Kishan Know). If there's a gap that needs research-backed, ground-tested technology, we're interested.",
   },
   {
-    question: "What if the automation doesn't work for my business?",
+    question: "How can organizations or governments partner with you?",
     answer:
-      "We start with a thorough assessment to ensure automation makes sense for your specific workflows. If something isn't working, we refine it until it does.",
+      "We're open to research collaborations, implementation partnerships, and CSR engagements. Reach out through our contact form, and we'll schedule a call to understand your needs and explore how we can work together.",
   },
   {
-    question: "How much does it cost?",
+    question: "Are your solutions only for India?",
     answer:
-      "Pricing depends on your needs and scope. After our free assessment, we'll provide a clear proposal with transparent pricing and no hidden fees.",
-  },
-  {
-    question: "What happens after implementation?",
-    answer:
-      "We provide training for your team and ongoing support to ensure everything runs smoothly. As your business evolves, we help optimize and refine your systems.",
+      "While our current implementations are in India, our technology — especially around inclusive education and AI-powered screening — is designed to be adapted for any context. We're open to international partnerships and collaborations.",
   },
 ];
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndexes, setOpenIndexes] = useState<number[]>([]);
 
   const toggleAccordion = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+    // Toggle individual items - multiple can be open
+    if (openIndexes.includes(index)) {
+      setOpenIndexes(openIndexes.filter((i) => i !== index));
+    } else {
+      setOpenIndexes([...openIndexes, index]);
+    }
   };
 
   return (
     <section className="bg-[#F8F3ED] py-[120px] px-8 md:px-16" id="faq">
-      <div className="max-w-[1200px] mx-auto flex flex-col items-center">
+      <div className="max-w-[1100px] mx-auto flex flex-col items-center">
         {/* Badge */}
-        <div className="mb-6">
-          <div className="bg-[#EAE0D5] px-3 py-1 rounded-full border border-[rgba(45,36,30,0.1)]">
-            <span className="text-[12px] font-semibold text-[#2D241E] uppercase tracking-wider">
+        <div className="mb-8">
+          <div className="bg-[#F3EDE5] px-4 py-2 rounded-full">
+            <span className="text-[13px] font-medium text-[#2D241E] tracking-wide">
               FAQ
             </span>
           </div>
         </div>
 
         {/* Heading */}
-        <div className="text-center mb-12 max-w-[800px]">
-          <h2 className="font-display text-[48px] md:text-[56px] text-[#2D241E] mb-6 leading-[1.2]">
-            Your questions <span className="text-[#A48D7F]">answered.</span>
+        <div className="text-center mb-16 max-w-[750px]">
+          <h2 className="font-display text-[52px] md:text-[64px] text-[#2D241E] mb-6 leading-[1.15] tracking-tight">
+            Your questions <span className="text-[#7A6F68]">answered.</span>
           </h2>
-          <p className="text-[#2D241E]/70 text-[16px] md:text-[18px] leading-[1.6] max-w-[600px] mx-auto">
-            Everything you need to know about working with us. Still have questions? Book a free call and we'll walk you through it.
+          <p className="text-[#5C5550] text-[16px] md:text-[17px] leading-[1.6] max-w-[600px] mx-auto">
+            Everything you need to know about working with us. Still have questions? Schedule a call and we'll walk you through it.
           </p>
         </div>
 
         {/* Accordion List */}
-        <div className="w-full max-w-[800px] space-y-4">
+        <div className="w-full max-w-[900px] space-y-4">
           {faqData.map((item, index) => (
             <div
               key={index}
-              className="bg-[rgba(255,255,255,0.4)] rounded-[24px] border border-[rgba(45,36,30,0.1)] overflow-hidden transition-all duration-300"
+              className="bg-[#F3EDE5] rounded-[20px] overflow-hidden transition-all duration-200"
             >
               <button
                 onClick={() => toggleAccordion(index)}
-                className="w-full flex items-center justify-between p-6 md:p-8 text-left focus:outline-none"
-                aria-expanded={openIndex === index}
+                className="w-full flex items-center justify-between px-8 py-7 text-left focus:outline-none"
+                aria-expanded={openIndexes.includes(index)}
               >
-                <span className="font-sans text-[18px] md:text-[20px] font-medium text-[#2D241E]">
+                <span className="font-sans text-[18px] md:text-[20px] font-normal text-[#2D241E] pr-6 leading-[1.4]">
                   {item.question}
                 </span>
-                <div className="flex-shrink-0 ml-4">
-                  {openIndex === index ? (
-                    <Minus className="w-6 h-6 text-[#2D241E]/60 transition-transform duration-300" />
+                <div className="flex-shrink-0">
+                  {openIndexes.includes(index) ? (
+                    <X className="w-6 h-6 text-[#2D241E]" strokeWidth={2} />
                   ) : (
-                    <Plus className="w-6 h-6 text-[#2D241E]/60 transition-transform duration-300" />
+                    <Plus className="w-6 h-6 text-[#2D241E]" strokeWidth={2} />
                   )}
                 </div>
               </button>
@@ -88,13 +88,13 @@ export default function FAQ() {
               <div
                 className={cn(
                   "grid transition-all duration-300 ease-in-out",
-                  openIndex === index
+                  openIndexes.includes(index)
                     ? "grid-rows-[1fr] opacity-100"
                     : "grid-rows-[0fr] opacity-0"
                 )}
               >
                 <div className="overflow-hidden">
-                  <div className="px-6 md:px-8 pb-8 text-[#2D241E]/80 text-[16px] leading-[1.6]">
+                  <div className="px-8 pb-7 text-[#5C5550] text-[15px] md:text-[16px] leading-[1.7]">
                     {item.answer}
                   </div>
                 </div>

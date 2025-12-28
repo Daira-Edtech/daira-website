@@ -1,451 +1,106 @@
 'use client';
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-
-const otherAgencyPoints = [
-  "Sell what's trendy",
-  "Unclear timelines",
-  "Hidden costs",
-];
-
-const clauraPoints = [
-  "Build what matters",
-  "Done with you",
-  "Transparent process",
-  "Real results",
-];
-
-const innovativePoints = [
-  "Custom AI solutions",
-  "Rapid implementation",
-  "Ongoing optimization",
-];
-
-type CardType = 'other' | 'claura' | 'innovative' | null;
+import React from 'react';
 
 export default function WhyChooseUs() {
-  const [hoveredCard, setHoveredCard] = useState<CardType>(null);
-
   return (
-    <section className="py-[120px] bg-[#F8F3ED] overflow-hidden" id="why-choose-us">
-      <div className="container mx-auto max-w-[1400px] px-8 text-center mb-[80px]">
+    <section
+      className="py-[100px] bg-[#F8F3ED] overflow-hidden"
+      id="why-daira"
+    >
+      {/* Heading */}
+      <div className="container mx-auto max-w-[1400px] px-8 text-center mb-[60px]">
         <div className="inline-block px-4 py-1.5 bg-[#EAE0D5] rounded-full mb-6">
           <span className="text-[12px] font-bold text-[#2D241E] uppercase tracking-wider">
-            Why choose us
+            Why Daira
           </span>
         </div>
 
         <h2 className="font-display text-[56px] leading-[1.2] text-[#2D241E] mb-6">
-          We&apos;re not your <span className="italic text-[#7A6F68]">typical</span> AI agency.
+          We&apos;re not your <span className="italic text-[#7A6F68]">typical</span> EdTech startup.
         </h2>
 
-        <p className="max-w-[600px] mx-auto text-[16px] leading-relaxed text-[#7A6F68]">
-          We skip the buzzwords and experimental projects to build systems that actually work for your business.
+        <p className="max-w-[700px] mx-auto text-[16px] leading-relaxed text-[#7A6F68]">
+          We&apos;re an R&D lab that builds for impact, not just exits — working
+          where others won&apos;t go.
         </p>
       </div>
 
-      <div className="container mx-auto max-w-[1400px] px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
-          {/* Card 1: Other Agencies */}
-          {hoveredCard !== 'other' && (
-            <motion.div 
-              layoutId="other-agencies-card"
-              onMouseEnter={() => setHoveredCard('other')}
-              whileHover={{ scale: 1.02, y: -6 }}
-              transition={{ 
-                type: "spring", 
-                stiffness: 400, 
-                damping: 30,
-                mass: 0.5,
-              }}
-              className="relative rounded-[32px] overflow-hidden h-[380px] shadow-xl cursor-pointer will-change-transform"
-            >
-              <div 
-                className="absolute inset-0"
-                style={{
-                  background: 'linear-gradient(135deg, #0a0e27 0%, #1a1f3a 30%, #2d1b4e 60%, #1e1e3f 100%)',
-                }}
-              />
-              <div className="absolute inset-0 bg-black/40" />
-              
-              <div className="relative z-10 h-full flex flex-col justify-between p-10">
-                <div className="flex flex-wrap gap-3">
-                  {otherAgencyPoints.map((point, idx) => (
-                    <div 
-                      key={idx}
-                      className="px-4 py-2 bg-white/15 backdrop-blur-md border border-white/25 rounded-full text-white text-[13px] font-medium shadow-lg"
-                    >
-                      {point}
-                    </div>
-                  ))}
-                </div>
-
-                <div>
-                  <h3 className="font-display text-[48px] text-white mb-3 leading-tight drop-shadow-lg">
-                    Other agencies
-                  </h3>
-                  <p className="text-[15px] leading-relaxed text-white/95 drop-shadow-md">
-                    Overwhelm with buzzwords and delays.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          )}
-
-          {/* Card 2: Claura */}
-          {hoveredCard !== 'claura' && (
-            <motion.div 
-              layoutId="claura-card"
-              onMouseEnter={() => setHoveredCard('claura')}
-              whileHover={{ scale: 1.02, y: -6 }}
-              transition={{ 
-                type: "spring", 
-                stiffness: 400, 
-                damping: 30,
-                mass: 0.5,
-              }}
-              className="relative rounded-[32px] overflow-hidden h-[380px] shadow-xl cursor-pointer will-change-transform"
-            >
-              <div 
-                className="absolute inset-0"
-                style={{
-                  background: 'linear-gradient(135deg, #89f7fe 0%, #66a6ff 20%, #f093fb 50%, #fbc2eb 80%, #a8edea 100%)',
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-br from-pink-400/30 via-purple-400/20 to-blue-400/30" />
-              
-              <div className="relative z-10 h-full flex flex-col justify-between p-10">
-                <div className="flex flex-wrap gap-3">
-                  {clauraPoints.map((point, idx) => (
-                    <div 
-                      key={idx}
-                      className="px-4 py-2 bg-white/40 backdrop-blur-md border border-white/50 rounded-full text-white text-[13px] font-semibold shadow-lg"
-                    >
-                      {point}
-                    </div>
-                  ))}
-                </div>
-
-                <div>
-                  <h3 className="font-display text-[48px] text-white mb-3 leading-tight drop-shadow-2xl">
-                    Claura
-                  </h3>
-                  <p className="text-[15px] leading-relaxed text-white drop-shadow-lg">
-                    Simple language, fast results.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          )}
-
-          {/* Card 3: Innovative */}
-          {hoveredCard !== 'innovative' && (
-            <motion.div 
-              layoutId="innovative-card"
-              onMouseEnter={() => setHoveredCard('innovative')}
-              whileHover={{ scale: 1.02, y: -6 }}
-              transition={{ 
-                type: "spring", 
-                stiffness: 400, 
-                damping: 30,
-                mass: 0.5,
-              }}
-              className="relative rounded-[32px] overflow-hidden h-[380px] shadow-xl cursor-pointer will-change-transform"
-            >
-              <div 
-                className="absolute inset-0"
-                style={{
-                  background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 30%, #FF6347 60%, #FF4500 100%)',
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 via-red-400/20 to-yellow-400/20" />
-              
-              <div className="relative z-10 h-full flex flex-col justify-between p-10">
-                <div className="flex flex-wrap gap-3">
-                  {innovativePoints.map((point, idx) => (
-                    <div 
-                      key={idx}
-                      className="px-4 py-2 bg-white/35 backdrop-blur-md border border-white/45 rounded-full text-white text-[13px] font-semibold shadow-lg"
-                    >
-                      {point}
-                    </div>
-                  ))}
-                </div>
-
-                <div>
-                  <h3 className="font-display text-[48px] text-white mb-3 leading-tight drop-shadow-2xl">
-                    Innovative
-                  </h3>
-                  <p className="text-[15px] leading-relaxed text-white drop-shadow-lg">
-                    Cutting-edge AI implementation.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          )}
-
-        </div>
-      </div>
-
-      {/* Modal - Less Blur */}
-      <AnimatePresence mode="wait">
-        {hoveredCard && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ 
-              duration: 0.25,
-              ease: [0.32, 0.72, 0, 1]
-            }}
-            className="fixed inset-0 z-[60] flex items-center justify-center px-4 pointer-events-none"
-            style={{ perspective: '2000px' }}
-          >
-            {/* Backdrop - Less Blur, Faster */}
-            <motion.div 
-              initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-              animate={{ opacity: 1, backdropFilter: "blur(12px)" }}
-              exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-              transition={{ duration: 0.2 }}
-              onMouseEnter={() => setHoveredCard(null)}
-              className="absolute inset-0 bg-black/60 pointer-events-auto"
+      {/* Cards */}
+      <div className="container mx-auto max-w-[1300px] px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Card 1: Typical EdTech */}
+          <div className="relative rounded-[32px] overflow-hidden min-h-[420px] shadow-2xl">
+            <div
+              className="absolute inset-0 opacity-70"
               style={{
-                WebkitBackdropFilter: 'blur(12px)',
+                backgroundImage:
+                  'url(https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38690446-cca0-49d2-bce9-31048cb9d371-claura-framer-ai/assets/images/nOTrxDdMtR8XwWdL7sE4DA27w-10.png)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                filter: 'blur(90px) grayscale(100%) brightness(0.6)',
+                transform: 'scale(1.4)',
               }}
             />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#3F3024]/95 via-[#6B5642]/85 to-[#D6C3AE]/95" />
 
-            {/* Expanded Card */}
-            <motion.div
-              layoutId={`${hoveredCard}-${hoveredCard === 'other' ? 'agencies-' : ''}card`}
-              onMouseEnter={() => setHoveredCard(hoveredCard)}
-              onMouseLeave={() => setHoveredCard(null)}
-              className="relative w-full max-w-4xl rounded-[32px] overflow-hidden pointer-events-auto will-change-transform"
-              style={{ 
-                height: '85vh',
-                boxShadow: '0 25px 100px -10px rgba(0, 0, 0, 0.5)',
+            {/* content fully centered */}
+            <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-8 md:px-12 py-6">
+              <h3 className="font-display text-[40px] md:text-[44px] text-white leading-[1.1] drop-shadow-md mb-8">
+                Typical EdTech
+              </h3>
+
+              <div className="space-y-3 text-white/90 text-[14px] leading-[1.8] max-w-[430px] text-justify">
+                <p>Build for urban, English-speaking markets</p>
+                <p>Focus on test prep and content delivery</p>
+                <p>No government integration</p>
+                <p>Solutions that work in labs, not in fields</p>
+              </div>
+
+              <div className="w-full pt-4 border-t border-white/25 mt-8">
+                <p className="text-white/75 text-[13px] italic text-center">
+                  Most EdTech builds for the 10% who already have access
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2: Daira EdTech */}
+          <div className="relative rounded-[32px] overflow-hidden min-h-[420px] shadow-2xl">
+            <div
+              className="absolute inset-0 opacity-85"
+              style={{
+                backgroundImage:
+                  'url(https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38690446-cca0-49d2-bce9-31048cb9d371-claura-framer-ai/assets/images/nOTrxDdMtR8XwWdL7sE4DA27w-10.png)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                filter: 'blur(80px) saturate(1.25) brightness(0.9)',
+                transform: 'scale(1.4)',
               }}
-              transition={{
-                layout: {
-                  type: "spring",
-                  stiffness: 200,
-                  damping: 25,
-                  mass: 1.2,
-                  duration: 0.9,
-                },
-              }}
-            >
-              {hoveredCard === 'other' && (
-                <>
-                  <div 
-                    className="absolute inset-0"
-                    style={{
-                      background: 'linear-gradient(135deg, #0a0e27 0%, #1a1f3a 30%, #2d1b4e 60%, #1e1e3f 100%)',
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-black/40" />
-                  
-                  <motion.div 
-                    initial={{ opacity: 1 }}
-                    animate={{ opacity: 1 }}
-                    className="relative z-10 h-full flex flex-col p-12 overflow-y-auto"
-                  >
-                    <div className="flex flex-wrap gap-3 mb-8">
-                      {otherAgencyPoints.map((point, idx) => (
-                        <motion.div
-                          key={idx}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ 
-                            delay: 0.3 + (idx * 0.05),
-                            duration: 0.4,
-                            ease: [0.32, 0.72, 0, 1]
-                          }}
-                          className="px-4 py-2.5 bg-white/15 backdrop-blur-md border border-white/25 rounded-full text-white text-[14px] font-medium shadow-lg"
-                        >
-                          {point}
-                        </motion.div>
-                      ))}
-                    </div>
-                    
-                    <h3 className="font-display text-[72px] text-white mb-6 leading-tight drop-shadow-lg">
-                      Other agencies
-                    </h3>
-                    <p className="text-[22px] leading-relaxed text-white/95 max-w-2xl drop-shadow-md mb-10">
-                      Other agencies overwhelm you with buzzwords, take months to deliver, and leave you with tools you can&apos;t use.
-                    </p>
-                    
-                    <motion.ul 
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ 
-                        delay: 0.5,
-                        duration: 0.6,
-                        ease: [0.32, 0.72, 0, 1]
-                      }}
-                      className="space-y-4 text-white/90 text-[18px]"
-                    >
-                      {["Endless meetings with no clear outcomes", "Experimental tech that doesn't integrate", "Hidden costs and scope creep", "No ongoing support after launch"].map((item, idx) => (
-                        <motion.li
-                          key={idx}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ 
-                            delay: 0.55 + (idx * 0.08),
-                            duration: 0.5,
-                            ease: [0.32, 0.72, 0, 1]
-                          }}
-                        >
-                          ❌ {item}
-                        </motion.li>
-                      ))}
-                    </motion.ul>
-                  </motion.div>
-                </>
-              )}
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#3A2718]/95 via-[#7A5433]/90 to-[#C9A27B]/90" />
 
-              {hoveredCard === 'claura' && (
-                <>
-                  <div 
-                    className="absolute inset-0"
-                    style={{
-                      background: 'linear-gradient(135deg, #89f7fe 0%, #66a6ff 20%, #f093fb 50%, #fbc2eb 80%, #a8edea 100%)',
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-br from-pink-400/30 via-purple-400/20 to-blue-400/30" />
-                  
-                  <motion.div 
-                    initial={{ opacity: 1 }}
-                    animate={{ opacity: 1 }}
-                    className="relative z-10 h-full flex flex-col p-12 overflow-y-auto"
-                  >
-                    <div className="flex flex-wrap gap-3 mb-8">
-                      {clauraPoints.map((point, idx) => (
-                        <motion.div
-                          key={idx}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ 
-                            delay: 0.3 + (idx * 0.05),
-                            duration: 0.4,
-                            ease: [0.32, 0.72, 0, 1]
-                          }}
-                          className="px-4 py-2.5 bg-white/40 backdrop-blur-md border border-white/50 rounded-full text-white text-[14px] font-semibold shadow-lg"
-                        >
-                          {point}
-                        </motion.div>
-                      ))}
-                    </div>
-                    
-                    <h3 className="font-display text-[72px] text-white mb-6 leading-tight drop-shadow-2xl">
-                      Claura
-                    </h3>
-                    <p className="text-[22px] leading-relaxed text-white max-w-2xl drop-shadow-lg mb-10">
-                      At Claura, we use simple language, deliver results in weeks, and build systems that work from day one.
-                    </p>
-                    
-                    <motion.ul 
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ 
-                        delay: 0.5,
-                        duration: 0.6,
-                        ease: [0.32, 0.72, 0, 1]
-                      }}
-                      className="space-y-4 text-white text-[18px]"
-                    >
-                      {["Clear roadmap from day one", "Proven systems tailored to your business", "Transparent pricing with no surprises", "Continuous support and optimization"].map((item, idx) => (
-                        <motion.li
-                          key={idx}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ 
-                            delay: 0.55 + (idx * 0.08),
-                            duration: 0.5,
-                            ease: [0.32, 0.72, 0, 1]
-                          }}
-                        >
-                          ✅ {item}
-                        </motion.li>
-                      ))}
-                    </motion.ul>
-                  </motion.div>
-                </>
-              )}
+            <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-8 md:px-12 py-6">
+              <h3 className="font-display text-[40px] md:text-[44px] text-white leading-[1.1] drop-shadow-md mb-8">
+                Daira EdTech
+              </h3>
 
-              {hoveredCard === 'innovative' && (
-                <>
-                  <div 
-                    className="absolute inset-0"
-                    style={{
-                      background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 30%, #FF6347 60%, #FF4500 100%)',
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 via-red-400/20 to-yellow-400/20" />
-                  
-                  <motion.div 
-                    initial={{ opacity: 1 }}
-                    animate={{ opacity: 1 }}
-                    className="relative z-10 h-full flex flex-col p-12 overflow-y-auto"
-                  >
-                    <div className="flex flex-wrap gap-3 mb-8">
-                      {innovativePoints.map((point, idx) => (
-                        <motion.div
-                          key={idx}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ 
-                            delay: 0.3 + (idx * 0.05),
-                            duration: 0.4,
-                            ease: [0.32, 0.72, 0, 1]
-                          }}
-                          className="px-4 py-2.5 bg-white/35 backdrop-blur-md border border-white/45 rounded-full text-white text-[14px] font-semibold shadow-lg"
-                        >
-                          {point}
-                        </motion.div>
-                      ))}
-                    </div>
-                    
-                    <h3 className="font-display text-[72px] text-white mb-6 leading-tight drop-shadow-2xl">
-                      Innovative
-                    </h3>
-                    <p className="text-[22px] leading-relaxed text-white max-w-2xl drop-shadow-lg mb-10">
-                      Cutting-edge AI implementation with custom solutions designed specifically for your unique challenges.
-                    </p>
-                    
-                    <motion.ul 
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ 
-                        delay: 0.5,
-                        duration: 0.6,
-                        ease: [0.32, 0.72, 0, 1]
-                      }}
-                      className="space-y-4 text-white text-[18px]"
-                    >
-                      {["Latest AI technologies", "Rapid prototyping and deployment", "Scalable architecture", "Continuous innovation updates"].map((item, idx) => (
-                        <motion.li
-                          key={idx}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ 
-                            delay: 0.55 + (idx * 0.08),
-                            duration: 0.5,
-                            ease: [0.32, 0.72, 0, 1]
-                          }}
-                        >
-                          ✅ {item}
-                        </motion.li>
-                      ))}
-                    </motion.ul>
-                  </motion.div>
-                </>
-              )}
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <div className="space-y-3 text-white text-[14px] leading-[1.8] font-medium max-w-[430px] text-justify">
+                <p>Build for underserved, multilingual India</p>
+                <p>Focus on inclusion, early intervention, accessibility</p>
+                <p>Deep government partnerships at all levels</p>
+                <p>Proven implementations in real districts</p>
+              </div>
+
+              <div className="w-full pt-4 border-t border-white/30 mt-8">
+                <p className="text-white text-[13px] italic font-medium text-center">
+                  We build for the 90% — where technology is needed most
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

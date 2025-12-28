@@ -1,73 +1,90 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { ArrowUpRight, Star } from "lucide-react";
 
 /**
  * ContactForm Component
- * Clones the final CTA and contact form section with pixel perfect accuracy.
- * Theme: Light (#F8F3ED background)
+ * Partner With Us section for Daira EdTech
  */
 export default function ContactForm() {
-  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [selectedPartnership, setSelectedPartnership] = useState<string[]>([]);
   const [selectedChallenge, setSelectedChallenge] = useState<string>("");
 
-  const services = [
-    "AI Assessment",
-    "Workflow Automation",
-    "Custom AI Tools",
-    "Training & Support",
-    "Implementing AI",
+  const partnershipTypes = [
+    "Government Implementation",
+    "CSR / Funding Partnership",
+    "Research Collaboration",
+    "Institutional Deployment",
+    "Policy Co-Development",
     "All of the above",
   ];
 
   const challenges = [
-    "Too many manual tasks",
-    "Unclear where to start",
-    "Previous solutions didn't work",
-    "Need to scale operations",
+    "Early intervention / screening at scale",
+    "Making education accessible for underserved communities",
+    "Digitizing and preserving cultural heritage",
+    "Building inclusive learning solutions",
+    "Enabling teachers / professionals with AI tools",
   ];
 
-  const toggleService = (service: string) => {
-    setSelectedServices((prev) =>
-      prev.includes(service)
-        ? prev.filter((s) => s !== service)
-        : [...prev, service]
+  const togglePartnership = (type: string) => {
+    setSelectedPartnership((prev) =>
+      prev.includes(type)
+        ? prev.filter((s) => s !== type)
+        : [...prev, type]
     );
   };
 
   return (
-    <section className="section-padding bg-[#F8F3ED] overflow-hidden" id="book-a-call">
+    <section className="section-padding bg-[#F8F3ED] overflow-hidden" id="partner">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           
-          {/* Left Side Info Block */}
-          <div className="flex flex-col justify-between p-10 lg:p-16 rounded-[24px] bg-white/40 backdrop-blur-md border border-white/20">
-            <div>
+          {/* Left Side - Animated Card with Flower */}
+          <div 
+            className="relative flex flex-col justify-between p-10 lg:p-16 rounded-[24px] overflow-hidden"
+            style={{
+              background: "linear-gradient(135deg, #4A8B8F 0%, #E89A7B 50%, #D4A896 100%)",
+            }}
+          >
+            {/* Animated Flower Image */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="relative w-full h-full animate-sway">
+                <img
+                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38690446-cca0-49d2-bce9-31048cb9d371-claura-framer-ai/assets/images/nOTrxDdMtR8XwWdL7sE4DA27w-10.png"
+                  alt="Decorative flower"
+                  className="w-full h-full object-contain opacity-90"
+                />
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="relative z-10">
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={14} fill="#A48D7F" color="#A48D7F" />
+                  <Star key={i} size={14} fill="#FFFFFF" color="#FFFFFF" />
                 ))}
               </div>
-              <p className="text-[12px] font-semibold uppercase tracking-wider text-[#7A6F68] mb-8">
-                Helped over 100+ businesses
+              <p className="text-[12px] font-semibold uppercase tracking-wider text-white/80 mb-8">
+                Backed by India AI Mission, Govt Of India
               </p>
               
-              <h2 className="font-display text-[48px] lg:text-[64px] leading-[1.1] text-[#2D241E] mb-6">
-                Turn confusion into clarity, <span className="text-[#A48D7F]">today.</span>
+              <h2 className="font-display text-[48px] lg:text-[56px] leading-[1.1] text-white mb-6">
+                Partner With Us
               </h2>
               
-              <p className="body-text text-[18px] max-w-md">
-                Book a free 30-minute assessment and we&apos;ll show you exactly where AI can save you time and money.
+              <p className="text-[16px] lg:text-[18px] text-white/90 max-w-md leading-relaxed">
+                Let&apos;s build impact together. Schedule a call to explore how Daira EdTech can support your mission — whether you&apos;re a government body, NGO, CSR initiative, or institution committed to inclusive education.
               </p>
             </div>
 
-            <div className="mt-16 pt-12 border-t border-[#2D241E]/10">
-              <div className="flex flex-wrap items-center gap-x-8 gap-y-4 opacity-40 grayscale">
-                <span className="font-display text-[24px]">Hamilton</span>
-                <span className="font-display text-[24px]">Amsterdam</span>
-                <span className="font-display text-[24px] italic">Theo</span>
+            {/* Bottom Brand Names */}
+            <div className="relative z-10 mt-16 pt-12 border-t border-white/20">
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-4 text-white/60">
+                <span className="font-display text-[20px]">NIEPID</span>
+                <span className="font-display text-[20px]">NIMHR</span>
+                <span className="font-display text-[20px]">India AI Mission</span>
               </div>
             </div>
           </div>
@@ -90,24 +107,24 @@ export default function ContactForm() {
                 />
               </div>
 
-              {/* Service Selection */}
+              {/* Partnership Type Selection */}
               <div>
                 <p className="text-[14px] font-medium text-[#7A6F68] mb-4">
-                  What services are you interested in?
+                  What type of partnership interests you?
                 </p>
                 <div className="flex flex-wrap gap-3">
-                  {services.map((service) => (
+                  {partnershipTypes.map((type) => (
                     <button
-                      key={service}
+                      key={type}
                       type="button"
-                      onClick={() => toggleService(service)}
+                      onClick={() => togglePartnership(type)}
                       className={`px-4 py-2 rounded-full text-[13px] font-medium transition-all ${
-                        selectedServices.includes(service)
+                        selectedPartnership.includes(type)
                           ? "bg-[#2D241E] text-white"
                           : "bg-[#F1EAE2] text-[#2D241E] hover:bg-[#EAE0D5]"
                       }`}
                     >
-                      {service}
+                      {type}
                     </button>
                   ))}
                 </div>
@@ -116,7 +133,7 @@ export default function ContactForm() {
               {/* Challenge Selection */}
               <div>
                 <p className="text-[14px] font-medium text-[#7A6F68] mb-4">
-                  What&apos;s your biggest automation challenge?
+                  What challenge are you trying to solve?
                 </p>
                 <div className="flex flex-wrap gap-3">
                   {challenges.map((challenge) => (
@@ -138,7 +155,7 @@ export default function ContactForm() {
 
               {/* Textarea */}
               <textarea
-                placeholder="Tell us about your business..."
+                placeholder="Tell us about your organization..."
                 rows={4}
                 className="w-full px-6 py-4 rounded-[16px] bg-[#F1EAE2] border-none text-[#2D241E] focus:ring-1 focus:ring-[#2D241E] placeholder:text-[#7A6F68]/60 transition-all resize-none"
               ></textarea>
@@ -148,7 +165,7 @@ export default function ContactForm() {
                 type="submit"
                 className="w-full py-5 rounded-full bg-[#2D241E] text-white font-semibold text-[16px] flex items-center justify-center gap-2 hover:scale-[1.01] transition-transform active:scale-[0.99]"
               >
-                Book a call
+                Schedule a Call
                 <ArrowUpRight size={18} />
               </button>
 
@@ -163,6 +180,23 @@ export default function ContactForm() {
           </div>
         </div>
       </div>
+
+      {/* CSS Animation for Swaying Effect */}
+      <style jsx>{`
+        @keyframes sway {
+          0%, 100% {
+            transform: rotate(-2deg);
+          }
+          50% {
+            transform: rotate(2deg);
+          }
+        }
+        
+        .animate-sway {
+          animation: sway 4s ease-in-out infinite;
+          transform-origin: bottom center;
+        }
+      `}</style>
     </section>
   );
 }

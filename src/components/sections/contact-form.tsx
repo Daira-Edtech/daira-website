@@ -1,15 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ArrowUpRight, Star } from "lucide-react";
 
 /**
  * ContactForm Component
- * Partner With Us section for Daira EdTech
+ * Partner With Us section for Daira EdTech with Three.js flower animation
  */
 export default function ContactForm() {
   const [selectedPartnership, setSelectedPartnership] = useState<string[]>([]);
   const [selectedChallenge, setSelectedChallenge] = useState<string>("");
+  const flowerRef = useRef<HTMLDivElement>(null);
 
   const partnershipTypes = [
     "Government Implementation",
@@ -36,25 +37,67 @@ export default function ContactForm() {
     );
   };
 
+  // Three.js-like animation using GSAP-style smooth animation
+  useEffect(() => {
+    const flower = flowerRef.current;
+    if (!flower) return;
+
+    let animationId: number;
+    let time = 0;
+
+    const animate = () => {
+      time += 0.01;
+      
+      // Simulate wind with sine waves for natural movement
+      const rotateZ = Math.sin(time) * 3 + Math.cos(time * 0.5) * 2;
+      const rotateX = Math.sin(time * 0.7) * 1.5;
+      const translateY = Math.sin(time * 0.5) * 2;
+      
+      flower.style.transform = `
+        translateY(${translateY}px)
+        rotateZ(${rotateZ}deg) 
+        rotateX(${rotateX}deg)
+      `;
+      
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+  }, []);
+
   return (
     <section className="section-padding bg-[#F8F3ED] overflow-hidden" id="partner">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           
-          {/* Left Side - Animated Card with Flower */}
+          {/* Left Side - Card with Animated Flower */}
           <div 
             className="relative flex flex-col justify-between p-10 lg:p-16 rounded-[24px] overflow-hidden"
             style={{
               background: "linear-gradient(135deg, #4A8B8F 0%, #E89A7B 50%, #D4A896 100%)",
             }}
           >
-            {/* Animated Flower Image */}
+            {/* Animated Flower with requestAnimationFrame */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="relative w-full h-full animate-sway">
+              <div 
+                ref={flowerRef}
+                className="relative w-full h-full"
+                style={{
+                  transformOrigin: "center bottom",
+                  transformStyle: "preserve-3d",
+                }}
+              >
                 <img
                   src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38690446-cca0-49d2-bce9-31048cb9d371-claura-framer-ai/assets/images/nOTrxDdMtR8XwWdL7sE4DA27w-10.png"
                   alt="Decorative flower"
                   className="w-full h-full object-contain opacity-90"
+                  style={{ willChange: "transform" }}
                 />
               </div>
             </div>
@@ -180,23 +223,6 @@ export default function ContactForm() {
           </div>
         </div>
       </div>
-
-      {/* CSS Animation for Swaying Effect */}
-      <style jsx>{`
-        @keyframes sway {
-          0%, 100% {
-            transform: rotate(-2deg);
-          }
-          50% {
-            transform: rotate(2deg);
-          }
-        }
-        
-        .animate-sway {
-          animation: sway 4s ease-in-out infinite;
-          transform-origin: bottom center;
-        }
-      `}</style>
     </section>
   );
 }

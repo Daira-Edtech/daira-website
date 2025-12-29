@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const CaseStudyHighlight = () => {
   return (
-    <section className="py-[120px] px-6 md:px-16 flex justify-center w-full bg-[#F8F3ED]">
+    <section  id="impact-stories" className="py-[120px] px-6 md:px-16 flex justify-center w-full bg-[#F8F3ED]">
       <div className="max-w-[1300px] w-full grid grid-cols-1 lg:grid-cols-[1fr_500px] gap-12 lg:gap-16 items-start">
         {/* Left Content Side */}
         <div className="flex flex-col">

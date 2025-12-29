@@ -1,6 +1,5 @@
 "use client";
 
-
 import React, { useRef, useEffect, useState } from 'react';
 import { Star, PlayCircle } from 'lucide-react';
 
@@ -77,9 +76,9 @@ const Hero = () => {
           </p>
         </div>
 
-        {/* Hero Headline */}
-        <h1 className="hero-heading font-display text-[#2D241E] max-w-[900px] mb-8 animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
-          From Research to <span className="italic">Real Impact.</span>
+        {/* SIMPLE CLEAN TITLE */}
+        <h1 className="hero-heading font-display text-[56px] md:text-[68px] lg:text-[80px] text-[#2D241E] max-w-[900px] mb-8 animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200 leading-[1.1]">
+          From Research to <span className="italic text-[#7A6F68]">Real Impact.</span>
         </h1>
 
         {/* Descriptive Subtext */}
@@ -101,7 +100,7 @@ const Hero = () => {
           </button>
         </div>
 
-        {/* EXACT GRID + Mouse Interaction - TS Fixed */}
+        {/* EXACT GRID + Mouse Interaction */}
         <div 
           ref={gridRef}
           className="mt-20 w-full max-w-[1100px] aspect-[1100/500] relative rounded-[32px] overflow-hidden cursor-pointer group"

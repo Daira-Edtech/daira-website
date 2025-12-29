@@ -1,5 +1,8 @@
+'use client';
+
 import React, { useEffect, useRef } from 'react';
 import { Play } from 'lucide-react';
+import Head from "next/head";
 
 const ProcessSteps = () => {
   const pathRef = useRef<SVGLineElement>(null);
@@ -110,44 +113,185 @@ const ProcessSteps = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-[#F8F3ED] py-[120px] px-8 md:px-16" id="how-we-work">
-      {/* Your exact JSX - no changes */}
-      <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[80px] lg:gap-[120px] items-start">
-        <div className="flex flex-col items-start max-w-[500px]">
-          <div className="bg-[#EAE0D5] px-4 py-1.5 rounded-[100px] mb-8">
-            <span className="text-[14px] font-semibold text-[#2D241E] font-sans">How We Work</span>
+    <>
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      
+      <section 
+        ref={sectionRef} 
+        className="bg-[#F8F3ED] py-[120px] px-8 md:px-16" 
+        id="how-we-work"
+        style={{ fontFamily: '"Noto Sans", sans-serif' }}
+      >
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[80px] lg:gap-[120px] items-start">
+          <div className="flex flex-col items-start max-w-[500px]">
+            <div className="bg-[#EAE0D5] px-4 py-1.5 rounded-[100px] mb-8">
+              <span 
+                className="text-[14px] font-semibold text-[#2D241E]"
+                style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 600 }}
+              >
+                How We Work
+              </span>
+            </div>
+            <h2 
+              className="font-display text-[48px] md:text-[56px] leading-[1.1] text-[#2D241E] mb-6"
+              style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 700 }}
+            >
+              From Research to <span className="text-[#7A6F68] italic underline transition-all hover:text-[#2D241E]">Real-World</span> Implementation.
+            </h2>
+            <p 
+              className="text-[16px] md:text-[18px] leading-[1.6] text-[#7A6F68] mb-10"
+              style={{ fontFamily: '"Noto Sans", sans-serif' }}
+            >
+              Our approach combines rigorous research, technology development, and deep government partnerships to create solutions that scale.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <a 
+                href="#partner-with-us" 
+                className="bg-[#2D241E] text-[#F8F3ED] px-8 py-4 rounded-[100px] font-medium text-[16px] hover:scale-105 transition-transform duration-200"
+                style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 500 }}
+              >
+                Partner With Us
+              </a>
+              <button 
+                className="flex items-center gap-2 border border-[#2D241E] text-[#2D241E] px-8 py-4 rounded-[100px] font-medium text-[16px] hover:bg-[#2D241E]/5 transition-colors duration-200"
+                style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 500 }}
+              >
+                Watch the video
+                <Play className="w-5 h-5 fill-current" />
+              </button>
+            </div>
           </div>
-          <h2 className="font-display text-[48px] md:text-[56px] leading-[1.1] text-[#2D241E] mb-6">
-            From Research to <span className="text-[#7A6F68] italic underline transition-all hover:text-[#2D241E]">Real-World</span> Implementation.
-          </h2>
-          <p className="text-[16px] md:text-[18px] leading-[1.6] text-[#7A6F68] mb-10 font-sans">
-            Our approach combines rigorous research, technology development, and deep government partnerships to create solutions that scale.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <a href="#partner-with-us" className="bg-[#2D241E] text-[#F8F3ED] px-8 py-4 rounded-[100px] font-medium text-[16px] hover:scale-105 transition-transform duration-200">
-              Partner With Us
-            </a>
-            <button className="flex items-center gap-2 border border-[#2D241E] text-[#2D241E] px-8 py-4 rounded-[100px] font-medium text-[16px] hover:bg-[#2D241E]/5 transition-colors duration-200">
-              Watch the video
-              <Play className="w-5 h-5 fill-current" />
-            </button>
-          </div>
-        </div>
 
-        <div className="flex flex-col gap-12 relative">
-          <svg className="absolute left-[24px] top-6 hidden md:block pointer-events-none" style={{ height: 'calc(100% - 48px)', width: '2px' }} preserveAspectRatio="none" viewBox="0 0 2 100">
-            <line x1="1" y1="0" x2="1" y2="100" stroke="#2D241E" strokeOpacity="0.1" strokeWidth="1" />
-            <line ref={pathRef} x1="1" y1="0" x2="1" y2="100" stroke="#2D241E" strokeWidth="2" strokeLinecap="round" />
-          </svg>
-          
-          {/* Your 4 steps exactly the same */}
-          <div className="flex flex-col md:flex-row gap-6 md:gap-10 relative z-10"><div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#F8F3ED] border border-[#2D241E]/10 flex items-center justify-center font-display text-[20px] text-[#2D241E] shadow-sm">01</div><div className="flex flex-col"><div className="flex flex-wrap items-baseline gap-3 mb-2"><h3 className="text-[24px] font-display text-[#2D241E]">Understand & Research</h3><span className="bg-[#F1EAE2] px-2 py-0.5 rounded-[4px] text-[12px] font-semibold text-[#7A6F68] font-sans uppercase tracking-wider">Months 1-3</span></div><p className="text-[16px] leading-[1.6] text-[#7A6F68] font-sans">We immerse ourselves in the problem — working with communities, experts, and government bodies to understand ground realities before writing a single line of code.</p></div></div>
-          <div className="flex flex-col md:flex-row gap-6 md:gap-10 relative z-10"><div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#F8F3ED] border border-[#2D241E]/10 flex items-center justify-center font-display text-[20px] text-[#2D241E] shadow-sm">02</div><div className="flex flex-col"><div className="flex flex-wrap items-baseline gap-3 mb-2"><h3 className="text-[24px] font-display text-[#2D241E]">Build & Validate</h3><span className="bg-[#F1EAE2] px-2 py-0.5 rounded-[4px] text-[12px] font-semibold text-[#7A6F68] font-sans uppercase tracking-wider">Months 3-6</span></div><p className="text-[16px] leading-[1.6] text-[#7A6F68] font-sans">We develop solutions in partnership with clinical experts and institutions like NIEPID, ensuring every product meets rigorous standards for efficacy and accessibility.</p></div></div>
-          <div className="flex flex-col md:flex-row gap-6 md:gap-10 relative z-10"><div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#F8F3ED] border border-[#2D241E]/10 flex items-center justify-center font-display text-[20px] text-[#2D241E] shadow-sm">03</div><div className="flex flex-col"><div className="flex flex-wrap items-baseline gap-3 mb-2"><h3 className="text-[24px] font-display text-[#2D241E]">Pilot & Scale</h3><span className="bg-[#F1EAE2] px-2 py-0.5 rounded-[4px] text-[12px] font-semibold text-[#7A6F68] font-sans uppercase tracking-wider">Months 6-12</span></div><p className="text-[16px] leading-[1.6] text-[#7A6F68] font-sans">We deploy with government partners at district, state, or national level — proving implementation is possible and building the evidence base for policy change.</p></div></div>
-          <div className="flex flex-col md:flex-row gap-6 md:gap-10 relative z-10"><div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#F8F3ED] border border-[#2D241E]/10 flex items-center justify-center font-display text-[20px] text-[#2D241E] shadow-sm">04</div><div className="flex flex-col"><div className="flex flex-wrap items-baseline gap-3 mb-2"><h3 className="text-[24px] font-display text-[#2D241E]">Policy & Sustainability</h3><span className="bg-[#F1EAE2] px-2 py-0.5 rounded-[4px] text-[12px] font-semibold text-[#7A6F68] font-sans uppercase tracking-wider">Ongoing</span></div><p className="text-[16px] leading-[1.6] text-[#7A6F68] font-sans">Beyond deployment, we work on policy enablement, professional training, and ecosystem building to ensure lasting impact.</p></div></div>
+          <div className="flex flex-col gap-12 relative">
+            <svg className="absolute left-[24px] top-6 hidden md:block pointer-events-none" style={{ height: 'calc(100% - 48px)', width: '2px' }} preserveAspectRatio="none" viewBox="0 0 2 100">
+              <line x1="1" y1="0" x2="1" y2="100" stroke="#2D241E" strokeOpacity="0.1" strokeWidth="1" />
+              <line ref={pathRef} x1="1" y1="0" x2="1" y2="100" stroke="#2D241E" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+            
+            {/* Step 1 */}
+            <div className="flex flex-col md:flex-row gap-6 md:gap-10 relative z-10">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#F8F3ED] border border-[#2D241E]/10 flex items-center justify-center text-[20px] text-[#2D241E] shadow-sm" style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 700 }}>
+                01
+              </div>
+              <div className="flex flex-col">
+                <div className="flex flex-wrap items-baseline gap-3 mb-2">
+                  <h3 
+                    className="text-[24px] font-display text-[#2D241E]"
+                    style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 700 }}
+                  >
+                    Understand & Research
+                  </h3>
+                  <span 
+                    className="bg-[#F1EAE2] px-2 py-0.5 rounded-[4px] text-[12px] font-semibold text-[#7A6F68] uppercase tracking-wider"
+                    style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 600 }}
+                  >
+                    Months 1-3
+                  </span>
+                </div>
+                <p 
+                  className="text-[16px] leading-[1.6] text-[#7A6F68]"
+                  style={{ fontFamily: '"Noto Sans", sans-serif' }}
+                >
+                  We immerse ourselves in the problem — working with communities, experts, and government bodies to understand ground realities before writing a single line of code.
+                </p>
+              </div>
+            </div>
+            
+            {/* Step 2 */}
+            <div className="flex flex-col md:flex-row gap-6 md:gap-10 relative z-10">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#F8F3ED] border border-[#2D241E]/10 flex items-center justify-center text-[20px] text-[#2D241E] shadow-sm" style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 700 }}>
+                02
+              </div>
+              <div className="flex flex-col">
+                <div className="flex flex-wrap items-baseline gap-3 mb-2">
+                  <h3 
+                    className="text-[24px] font-display text-[#2D241E]"
+                    style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 700 }}
+                  >
+                    Build & Validate
+                  </h3>
+                  <span 
+                    className="bg-[#F1EAE2] px-2 py-0.5 rounded-[4px] text-[12px] font-semibold text-[#7A6F68] uppercase tracking-wider"
+                    style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 600 }}
+                  >
+                    Months 3-6
+                  </span>
+                </div>
+                <p 
+                  className="text-[16px] leading-[1.6] text-[#7A6F68]"
+                  style={{ fontFamily: '"Noto Sans", sans-serif' }}
+                >
+                  We develop solutions in partnership with clinical experts and institutions like NIEPID, ensuring every product meets rigorous standards for efficacy and accessibility.
+                </p>
+              </div>
+            </div>
+            
+            {/* Step 3 */}
+            <div className="flex flex-col md:flex-row gap-6 md:gap-10 relative z-10">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#F8F3ED] border border-[#2D241E]/10 flex items-center justify-center text-[20px] text-[#2D241E] shadow-sm" style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 700 }}>
+                03
+              </div>
+              <div className="flex flex-col">
+                <div className="flex flex-wrap items-baseline gap-3 mb-2">
+                  <h3 
+                    className="text-[24px] font-display text-[#2D241E]"
+                    style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 700 }}
+                  >
+                    Pilot & Scale
+                  </h3>
+                  <span 
+                    className="bg-[#F1EAE2] px-2 py-0.5 rounded-[4px] text-[12px] font-semibold text-[#7A6F68] uppercase tracking-wider"
+                    style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 600 }}
+                  >
+                    Months 6-12
+                  </span>
+                </div>
+                <p 
+                  className="text-[16px] leading-[1.6] text-[#7A6F68]"
+                  style={{ fontFamily: '"Noto Sans", sans-serif' }}
+                >
+                  We deploy with government partners at district, state, or national level — proving implementation is possible and building the evidence base for policy change.
+                </p>
+              </div>
+            </div>
+            
+            {/* Step 4 */}
+            <div className="flex flex-col md:flex-row gap-6 md:gap-10 relative z-10">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#F8F3ED] border border-[#2D241E]/10 flex items-center justify-center text-[20px] text-[#2D241E] shadow-sm" style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 700 }}>
+                04
+              </div>
+              <div className="flex flex-col">
+                <div className="flex flex-wrap items-baseline gap-3 mb-2">
+                  <h3 
+                    className="text-[24px] font-display text-[#2D241E]"
+                    style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 700 }}
+                  >
+                    Policy & Sustainability
+                  </h3>
+                  <span 
+                    className="bg-[#F1EAE2] px-2 py-0.5 rounded-[4px] text-[12px] font-semibold text-[#7A6F68] uppercase tracking-wider"
+                    style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 600 }}
+                  >
+                    Ongoing
+                  </span>
+                </div>
+                <p 
+                  className="text-[16px] leading-[1.6] text-[#7A6F68]"
+                  style={{ fontFamily: '"Noto Sans", sans-serif' }}
+                >
+                  Beyond deployment, we work on policy enablement, professional training, and ecosystem building to ensure lasting impact.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

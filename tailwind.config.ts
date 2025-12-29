@@ -10,6 +10,7 @@ export default {
     extend: {
       fontFamily: {
         halant: ['var(--font-halant)', 'serif'],
+        noto: ['"Noto Sans"', 'sans-serif'],
       },
       keyframes: {
         gradient: {

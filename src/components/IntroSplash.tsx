@@ -6,7 +6,7 @@ interface IntroSplashProps {
   isVisible: boolean;
 }
 
-const letters = "Claura".split("");
+const letters = "Daira".split("");
 const customEase: Easing = [0.22, 1, 0.36, 1];
 
 const containerVariants: Variants = {
@@ -108,7 +108,7 @@ export const IntroSplash = ({ onComplete, isVisible }: IntroSplashProps) => {
               className="h-[1px] bg-[#2D241E]/25 mb-10"
             />
 
-            {/* Main Claura text */}
+            {/* Main Daira text */}
             <div className="overflow-hidden">
               <motion.h1
                 variants={containerVariants}
@@ -144,7 +144,7 @@ export const IntroSplash = ({ onComplete, isVisible }: IntroSplashProps) => {
               transition={{ duration: 0.6, delay: 1.5 }}
               className="mt-8 text-sm tracking-[0.4em] uppercase text-[#7A6F68] font-light"
             >
-              AI Consulting
+              EdTech R&D
             </motion.p>
 
             {/* Loading indicator */}

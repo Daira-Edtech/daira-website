@@ -1,11 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 
-/**
- * TestimonialQuote component clones the featured testimonial section.
- * It features a large bold quote overlaying an abstract nature background image.
- */
-
 const TestimonialQuote: React.FC = () => {
   return (
     <section className="relative w-full max-w-[1200px] mx-auto overflow-hidden px-4 sm:px-6 lg:px-8 mb-[120px]">
@@ -40,16 +35,16 @@ const TestimonialQuote: React.FC = () => {
 
           <blockquote className="mb-10 text-white">
             <h2 className="font-display text-[32px] md:text-[44px] lg:text-[48px] leading-[1.1] md:leading-[1.15] tracking-tight text-balance">
-              They didn&apos;t overwhelm us with options. They just built exactly what we needed. We&apos;re saving 15 hours a week and saw ROI in under two months.
+              "Daira EdTech&apos;s Jiveesha platform has transformed how we approach early intervention. For the first time, we can screen children at scale and connect them with the right support before it&apos;s too late."
             </h2>
           </blockquote>
 
           <div className="flex flex-col gap-1">
             <cite className="not-italic font-sans text-[18px] md:text-[20px] font-medium text-white">
-              Sarah Chen
+              Dr. [Name], Director
             </cite>
             <span className="font-sans text-[14px] md:text-[16px] text-white/80">
-              Founder at BrightPath Consulting
+              NIEPID, Government of India
             </span>
           </div>
         </div>

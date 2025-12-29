@@ -5,6 +5,7 @@ import Image from "next/image";
 import { MoveRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Head from "next/head";
+import { motion, AnimatePresence } from 'framer-motion';
 
 const servicesData = [
   {
@@ -118,41 +119,62 @@ export default function ServicesTabs() {
 
             {/* Content - IMAGE CLOSER TO TABS */}
             <div className="flex flex-col gap-6 -mt-8 lg:-mt-12">
+              {/* Animated Image */}
               <div className="relative w-full aspect-[16/11] rounded-[24px] overflow-hidden bg-[#F5F1EA]/70 backdrop-blur-sm border border-[#EDE5D8]/50 shadow-xl group/image hover:shadow-2xl transition-all duration-700 max-h-[320px]">
-                <Image
-                  key={`image-${displayTab}`}
-                  src={servicesData[displayTab].image}
-                  alt={servicesData[displayTab].title}
-                  fill
-                  className="object-cover transition-all duration-700 group-hover/image:scale-[1.05]"
-                  priority={false}
-                  unoptimized
-                />
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`image-${displayTab}`}
+                    initial={{ opacity: 0, scale: 1.1 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={servicesData[displayTab].image}
+                      alt={servicesData[displayTab].title}
+                      fill
+                      className="object-cover transition-all duration-700 group-hover/image:scale-[1.05]"
+                      priority={false}
+                      unoptimized
+                    />
+                  </motion.div>
+                </AnimatePresence>
                 <div className="absolute inset-0 bg-gradient-to-t from-[#2D241E]/10 via-transparent to-transparent pointer-events-none" />
               </div>
 
-              <div className="flex flex-col gap-3 px-1">
-                <h4 
-                  className="text-[22px] font-semibold text-[#2D241E] leading-tight transition-all duration-500"
-                  style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 600 }}
+              {/* Animated Content */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`content-${displayTab}`}
+                  className="flex flex-col gap-3 px-1"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4 }}
                 >
-                  {servicesData[displayTab].title}
-                </h4>
-                <p 
-                  className="text-[16px] leading-[1.6] text-[#7A6F68] max-w-[450px] transition-all duration-500"
-                  style={{ fontFamily: '"Noto Sans", sans-serif' }}
-                >
-                  {servicesData[displayTab].description}
-                </p>
-                <a 
-                  href="#partner-with-us" 
-                  className="inline-flex items-center gap-2 text-[#2D241E] font-semibold hover:gap-3 transition-all duration-300 group"
-                  style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 600 }}
-                >
-                  <MoveRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  <span>Partner With Us</span>
-                </a>
-              </div>
+                  <h4 
+                    className="text-[22px] font-semibold text-[#2D241E] leading-tight transition-all duration-500"
+                    style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 600 }}
+                  >
+                    {servicesData[displayTab].title}
+                  </h4>
+                  <p 
+                    className="text-[16px] leading-[1.6] text-[#7A6F68] max-w-[450px] transition-all duration-500"
+                    style={{ fontFamily: '"Noto Sans", sans-serif' }}
+                  >
+                    {servicesData[displayTab].description}
+                  </p>
+                  <a 
+                    href="#partner-with-us" 
+                    className="inline-flex items-center gap-2 text-[#2D241E] font-semibold hover:gap-3 transition-all duration-300 group"
+                    style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 600 }}
+                  >
+                    <MoveRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    <span>Partner With Us</span>
+                  </a>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
         </div>

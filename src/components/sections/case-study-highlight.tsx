@@ -1,8 +1,14 @@
-import React from 'react';
+'use client';
+
+import React, { useRef } from 'react';
 import Image from 'next/image';
 import Head from "next/head";
+import { motion, useInView } from 'framer-motion';
 
 const CaseStudyHighlight = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.3, margin: "-100px" });
+
   return (
     <>
       <Head>
@@ -13,6 +19,7 @@ const CaseStudyHighlight = () => {
       </Head>
       
       <section 
+        ref={ref}
         id="impact-stories" 
         className="py-[120px] px-6 md:px-16 flex justify-center w-full bg-[#F8F3ED]"
         style={{ fontFamily: '"Noto Sans", sans-serif' }}
@@ -21,34 +28,50 @@ const CaseStudyHighlight = () => {
           {/* Left Content Side */}
           <div className="flex flex-col">
             {/* Label Badge */}
-            <div className="mb-6">
+            <motion.div 
+              className="mb-6"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               <span 
                 className="inline-flex items-center px-3 py-1 bg-[#EAE0D5] rounded-full text-[12px] font-semibold text-[#2D241E] uppercase tracking-wider"
                 style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 600 }}
               >
                 Impact Story
               </span>
-            </div>
+            </motion.div>
 
             {/* Heading */}
-            <h2 
+            <motion.h2 
               className="font-display text-[48px] md:text-[56px] leading-[1.1] text-[#2D241E] mb-6"
               style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 700 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
               Transforming early intervention <br />
               <span className="text-[#A48D7F]">at scale.</span>
-            </h2>
+            </motion.h2>
 
             {/* Subheading */}
-            <h3 
+            <motion.h3 
               className="font-display text-[28px] md:text-[32px] text-[#2D241E] mb-10 leading-[1.3]"
               style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 700 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
             >
               Jiveesha: AI-Powered Neurodevelopmental Screening
-            </h3>
+            </motion.h3>
 
             {/* Descriptions */}
-            <div className="space-y-6 mb-14">
+            <motion.div 
+              className="space-y-6 mb-14"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               <p 
                 className="text-[#7A6F68] text-[15px] md:text-[16px] leading-[1.7]"
                 style={{ fontFamily: '"Noto Sans", sans-serif' }}
@@ -67,18 +90,31 @@ const CaseStudyHighlight = () => {
               >
                 Deployed across multiple districts under Samagra Shiksha Abhiyan, Jiveesha is proving that early intervention at scale is possible.
               </p>
-            </div>
+            </motion.div>
 
             {/* Stats Cards Row */}
             <div className="flex flex-wrap gap-6">
               {/* Stat Card 1 */}
-              <div className="bg-white/40 backdrop-blur-[20px] rounded-[24px] p-7 border border-white/20 min-w-[160px]">
-                <div 
+              <motion.div 
+                className="bg-white/40 backdrop-blur-[20px] rounded-[24px] p-7 border border-white/20 min-w-[160px] cursor-pointer"
+                initial={{ opacity: 0, y: 40 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                whileHover={{ 
+                  y: -8, 
+                  scale: 1.03,
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
+                  backgroundColor: "rgba(255, 255, 255, 0.6)",
+                  transition: { duration: 0.3 }
+                }}
+              >
+                <motion.div 
                   className="text-[44px] font-display text-[#2D241E] leading-tight mb-2"
                   style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 700 }}
+                  whileHover={{ scale: 1.05 }}
                 >
                   50,000+
-                </div>
+                </motion.div>
                 <div 
                   className="text-[16px] text-[#2D241E] font-semibold"
                   style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 600 }}
@@ -91,16 +127,29 @@ const CaseStudyHighlight = () => {
                 >
                   Since launch
                 </div>
-              </div>
+              </motion.div>
 
               {/* Stat Card 2 */}
-              <div className="bg-white/40 backdrop-blur-[20px] rounded-[24px] p-7 border border-white/20 min-w-[160px]">
-                <div 
+              <motion.div 
+                className="bg-white/40 backdrop-blur-[20px] rounded-[24px] p-7 border border-white/20 min-w-[160px] cursor-pointer"
+                initial={{ opacity: 0, y: 40 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+                transition={{ duration: 0.8, delay: 0.65 }}
+                whileHover={{ 
+                  y: -8, 
+                  scale: 1.03,
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
+                  backgroundColor: "rgba(255, 255, 255, 0.6)",
+                  transition: { duration: 0.3 }
+                }}
+              >
+                <motion.div 
                   className="text-[44px] font-display text-[#2D241E] leading-tight mb-2"
                   style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 700 }}
+                  whileHover={{ scale: 1.05 }}
                 >
                   15+
-                </div>
+                </motion.div>
                 <div 
                   className="text-[16px] text-[#2D241E] font-semibold"
                   style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 600 }}
@@ -113,16 +162,29 @@ const CaseStudyHighlight = () => {
                 >
                   Implementing solution
                 </div>
-              </div>
+              </motion.div>
 
               {/* Stat Card 3 */}
-              <div className="bg-white/40 backdrop-blur-[20px] rounded-[24px] p-7 border border-white/20 min-w-[160px]">
-                <div 
+              <motion.div 
+                className="bg-white/40 backdrop-blur-[20px] rounded-[24px] p-7 border border-white/20 min-w-[160px] cursor-pointer"
+                initial={{ opacity: 0, y: 40 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                whileHover={{ 
+                  y: -8, 
+                  scale: 1.03,
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
+                  backgroundColor: "rgba(255, 255, 255, 0.6)",
+                  transition: { duration: 0.3 }
+                }}
+              >
+                <motion.div 
                   className="text-[44px] font-display text-[#2D241E] leading-tight mb-2"
                   style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 700 }}
+                  whileHover={{ scale: 1.05 }}
                 >
                   85%
-                </div>
+                </motion.div>
                 <div 
                   className="text-[16px] text-[#2D241E] font-semibold"
                   style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 600 }}
@@ -135,40 +197,69 @@ const CaseStudyHighlight = () => {
                 >
                   In screening time
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
 
           {/* Right Branding Image Side */}
-          <div className="relative w-full aspect-[4/5] lg:aspect-[3/4] rounded-[24px] overflow-hidden">
-            <Image
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38690446-cca0-49d2-bce9-31048cb9d371-claura-framer-ai/assets/images/LBKnMROG8HBkFthEPXAy7RIQ8-4.png"
-              alt="Jiveesha Platform"
-              fill
-              className="object-cover"
-              priority
-            />
+          <motion.div 
+            className="relative w-full aspect-[4/5] lg:aspect-[3/4] rounded-[24px] overflow-hidden cursor-pointer"
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            whileHover={{ 
+              scale: 1.03,
+              rotate: 1,
+              transition: { duration: 0.4 }
+            }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.6 }}
+            >
+              <Image
+                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38690446-cca0-49d2-bce9-31048cb9d371-claura-framer-ai/assets/images/LBKnMROG8HBkFthEPXAy7RIQ8-4.png"
+                alt="Jiveesha Platform"
+                fill
+                className="object-cover"
+                priority
+              />
+            </motion.div>
             {/* Logo overlay */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="flex items-center gap-3 text-white">
-                <svg
+            <motion.div 
+              className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/20 to-transparent"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <motion.div 
+                className="flex items-center gap-3 text-white"
+                whileHover={{ 
+                  scale: 1.1,
+                  y: -5,
+                  transition: { duration: 0.3 }
+                }}
+              >
+                <motion.svg
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
                   className="w-10 h-10"
+                  whileHover={{ rotate: 180 }}
+                  transition={{ duration: 0.6 }}
                 >
                   <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-                </svg>
+                </motion.svg>
                 <span 
                   className="text-[36px] font-display"
                   style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 700 }}
                 >
                   Jiveesha
                 </span>
-              </div>
-            </div>
-          </div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
     </>

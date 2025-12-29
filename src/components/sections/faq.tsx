@@ -1,11 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { Plus, X } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Plus } from "lucide-react";
 import Head from "next/head";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
-const faqData = [
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+const faqData: FAQItem[] = [
   {
     question: "What makes Daira different from other EdTech companies?",
     answer:
@@ -32,12 +37,46 @@ export default function FAQ() {
   const [openIndexes, setOpenIndexes] = useState<number[]>([]);
 
   const toggleAccordion = (index: number) => {
-    // Toggle individual items - multiple can be open
     if (openIndexes.includes(index)) {
       setOpenIndexes(openIndexes.filter((i) => i !== index));
     } else {
       setOpenIndexes([...openIndexes, index]);
     }
+  };
+
+  // ✅ Staggered title variants
+  const titleContainerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const titleItemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15
+      }
+    }
+  };
+
+  const accordionVariants: Variants = {
+    hidden: { height: 0, opacity: 0 },
+    visible: { height: "auto", opacity: 1 }
+  };
+
+  const iconVariants: Variants = {
+    closed: { rotate: 0, scale: 1 },
+    open: { rotate: 135, scale: 1.1 }
   };
 
   return (
@@ -56,79 +95,97 @@ export default function FAQ() {
       >
         <div className="max-w-[1100px] mx-auto flex flex-col items-center">
           {/* Badge */}
-          <div className="mb-8">
+          <motion.div 
+            className="mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             <div className="bg-[#F3EDE5] px-4 py-2 rounded-full">
-              <span 
-                className="text-[13px] font-medium text-[#2D241E] tracking-wide"
-                style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 500 }}
-              >
+              <span className="text-[13px] font-medium text-[#2D241E] tracking-wide" style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 500 }}>
                 FAQ
               </span>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Heading */}
-          <div className="text-center mb-16 max-w-[750px]">
-            <h2 
+          {/* ✅ STAGGERED Title on scroll */}
+          <motion.div 
+            className="text-center mb-16 max-w-[750px]"
+            variants={titleContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <motion.h2 
               className="font-display text-[52px] md:text-[64px] text-[#2D241E] mb-6 leading-[1.15] tracking-tight"
+              variants={titleItemVariants}
               style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 700 }}
             >
               Your questions <span className="text-[#7A6F68]">answered.</span>
-            </h2>
-            <p 
+            </motion.h2>
+            
+            <motion.p 
               className="text-[#5C5550] text-[16px] md:text-[17px] leading-[1.6] max-w-[600px] mx-auto"
+              variants={titleItemVariants}
               style={{ fontFamily: '"Noto Sans", sans-serif' }}
             >
               Everything you need to know about working with us. Still have questions? Schedule a call and we'll walk you through it.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
-          {/* Accordion List */}
+          {/* Accordion - unchanged */}
           <div className="w-full max-w-[900px] space-y-4">
-            {faqData.map((item, index) => (
-              <div
-                key={index}
-                className="bg-[#F3EDE5] rounded-[20px] overflow-hidden transition-all duration-200"
-              >
-                <button
-                  onClick={() => toggleAccordion(index)}
-                  className="w-full flex items-center justify-between px-8 py-7 text-left focus:outline-none"
-                  aria-expanded={openIndexes.includes(index)}
-                >
-                  <span 
-                    className="text-[18px] md:text-[20px] font-normal text-[#2D241E] pr-6 leading-[1.4]"
-                    style={{ fontFamily: '"Noto Sans", sans-serif' }}
-                  >
-                    {item.question}
-                  </span>
-                  <div className="flex-shrink-0">
-                    {openIndexes.includes(index) ? (
-                      <X className="w-6 h-6 text-[#2D241E]" strokeWidth={2} />
-                    ) : (
-                      <Plus className="w-6 h-6 text-[#2D241E]" strokeWidth={2} />
-                    )}
-                  </div>
-                </button>
-
+            {faqData.map((item, index) => {
+              const isOpen = openIndexes.includes(index);
+              
+              return (
                 <div
-                  className={cn(
-                    "grid transition-all duration-300 ease-in-out",
-                    openIndexes.includes(index)
-                      ? "grid-rows-[1fr] opacity-100"
-                      : "grid-rows-[0fr] opacity-0"
-                  )}
+                  key={index}
+                  className="bg-[#F3EDE5] rounded-[20px] overflow-hidden transition-all duration-200"
                 >
-                  <div className="overflow-hidden">
-                    <div 
-                      className="px-8 pb-7 text-[#5C5550] text-[15px] md:text-[16px] leading-[1.7]"
+                  <button
+                    onClick={() => toggleAccordion(index)}
+                    className="w-full flex items-center justify-between px-8 py-7 text-left focus:outline-none"
+                  >
+                    <span 
+                      className="text-[18px] md:text-[20px] font-normal text-[#2D241E] pr-6 leading-[1.4]"
                       style={{ fontFamily: '"Noto Sans", sans-serif' }}
                     >
-                      {item.answer}
-                    </div>
-                  </div>
+                      {item.question}
+                    </span>
+                    <motion.div 
+                      className="flex-shrink-0"
+                      variants={iconVariants}
+                      animate={isOpen ? "open" : "closed"}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Plus className="w-6 h-6 text-[#2D241E]" strokeWidth={2.5} />
+                    </motion.div>
+                  </button>
+
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        variants={accordionVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="hidden"
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div 
+                          className="px-8 pb-7 text-[#5C5550] text-[15px] md:text-[16px] leading-[1.7]"
+                          style={{ fontFamily: '"Noto Sans", sans-serif' }}
+                        >
+                          {item.answer}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

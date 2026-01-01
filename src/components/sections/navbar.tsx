@@ -42,7 +42,7 @@ const Navbar = () => {
         
         {/* Desktop CTA */}
         <a 
-          href="#partner-with-us" 
+          href="#partner" 
           className="hidden md:block bg-black text-[#f5efe9] px-4 lg:px-6 py-2 text-sm font-semibold rounded-xl hover:bg-gray-900 transition-all duration-300 shadow-md hover:shadow-lg whitespace-nowrap"
         >
           Partner With Us

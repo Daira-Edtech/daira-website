@@ -44,30 +44,30 @@ export default function ServicesTabs() {
       </Head>
       
       <section 
-        className="bg-[#F8F3ED] py-[120px] px-8 overflow-hidden" 
+        className="bg-[#F8F3ED] py-16 sm:py-20 md:py-24 lg:py-28 xl:py-[120px] px-4 sm:px-6 md:px-8 overflow-hidden" 
         id="services"
         style={{ fontFamily: '"Noto Sans", sans-serif' }}
       >
         <div className="max-w-[1200px] mx-auto">
-          <div className="flex flex-col gap-12 mb-[80px]">
+          <div className="flex flex-col gap-8 sm:gap-10 md:gap-12 mb-12 sm:mb-16 md:mb-20 lg:mb-[80px]">
             <div className="inline-flex items-center self-start">
               <span 
-                className="bg-[#EAE0D5] text-[#2D241E] px-4 py-1.5 rounded-full text-[12px] font-semibold uppercase tracking-wider"
+                className="bg-[#EAE0D5] text-[#2D241E] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-[12px] font-semibold uppercase tracking-wider"
                 style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 600 }}
               >
                 What We Do
               </span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-7 md:gap-8 items-start">
               <h2 
-                className="font-display text-[56px] leading-[1.1] text-[#2D241E] max-w-[500px]"
+                className="font-display text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.1] text-[#2D241E] max-w-[500px]"
                 style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 700 }}
               >
-                We handle <span className="text-[#7A6F68]">everything</span> so you don't have to.
+                We handle <span className="text-[#7A6F68]">everything</span> so you don&apos;t have to.
               </h2>
               <p 
-                className="text-[20px] leading-[1.6] text-[#7A6F68] max-w-[420px] pt-4"
+                className="text-[15px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] text-[#7A6F68] max-w-[420px] pt-2 sm:pt-3 md:pt-4"
                 style={{ fontFamily: '"Noto Sans", sans-serif' }}
               >
                 From identifying gaps in education to building AI-powered solutions and enabling policy implementation we handle research, development, and deployment end-to-end.
@@ -75,9 +75,9 @@ export default function ServicesTabs() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start lg:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-7 md:gap-8 items-start">
             {/* Tabs */}
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-2.5 md:space-y-3">
               {servicesData.map((service, index) => (
                 <button
                   key={index}
@@ -90,16 +90,16 @@ export default function ServicesTabs() {
                     setDisplayTab(index);
                   }}
                   className={cn(
-                    "relative flex items-center justify-between w-full px-8 py-4 rounded-[20px] text-left transition-all duration-500 group hover:scale-[1.02]",
+                    "relative flex items-center justify-between w-full rounded-[16px] sm:rounded-[18px] md:rounded-[20px] text-left transition-all duration-500 group hover:scale-[1.02]",
                     activeTab === index
-                      ? "bg-[#F5F1EA]/90 border border-[#EDE5D8]/70 shadow-lg scale-[1.08] py-5 px-7" 
-                      : "bg-[#F5F1EA]/90 border border-[#EDE5D8]/50 hover:bg-[#F5F1EA]/90 hover:border-[#EDE5D8]/70 hover:shadow-md py-4"
+                      ? "bg-[#F5F1EA]/90 border border-[#EDE5D8]/70 shadow-lg scale-[1.04] sm:scale-[1.06] md:scale-[1.08] py-4 sm:py-4.5 md:py-5 px-5 sm:px-6 md:px-7" 
+                      : "bg-[#F5F1EA]/90 border border-[#EDE5D8]/50 hover:bg-[#F5F1EA]/90 hover:border-[#EDE5D8]/70 hover:shadow-md py-3 sm:py-3.5 md:py-4 px-5 sm:px-6 md:px-8"
                   )}
                 >
                   <h3 
-                    className="font-display text-[38px] md:text-[42px] leading-tight font-semibold transition-all duration-500 flex items-baseline gap-1"
+                    className="font-display text-[28px] sm:text-[32px] md:text-[36px] lg:text-[38px] xl:text-[42px] leading-tight font-semibold transition-all duration-500 flex items-baseline gap-1"
                     style={{
-                      transform: `translateX(${activeTab === index ? '1.5rem' : '1rem'})`,
+                      transform: `translateX(${activeTab === index ? '1rem' : '0.5rem'})`,
                       fontFamily: '"Noto Sans", sans-serif',
                       fontWeight: 700
                     }}
@@ -118,9 +118,9 @@ export default function ServicesTabs() {
             </div>
 
             {/* Content - IMAGE CLOSER TO TABS */}
-            <div className="flex flex-col gap-6 -mt-8 lg:-mt-12">
+            <div className="flex flex-col gap-4 sm:gap-5 md:gap-6 mt-0 lg:-mt-8 xl:-mt-12">
               {/* Animated Image */}
-              <div className="relative w-full aspect-[16/11] rounded-[24px] overflow-hidden bg-[#F5F1EA]/70 backdrop-blur-sm border border-[#EDE5D8]/50 shadow-xl group/image hover:shadow-2xl transition-all duration-700 max-h-[320px]">
+              <div className="relative w-full aspect-[16/11] rounded-[18px] sm:rounded-[20px] md:rounded-[24px] overflow-hidden bg-[#F5F1EA]/70 backdrop-blur-sm border border-[#EDE5D8]/50 shadow-xl group/image hover:shadow-2xl transition-all duration-700 max-h-[280px] sm:max-h-[300px] md:max-h-[320px]">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={`image-${displayTab}`}
@@ -147,30 +147,30 @@ export default function ServicesTabs() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`content-${displayTab}`}
-                  className="flex flex-col gap-3 px-1"
+                  className="flex flex-col gap-2 sm:gap-2.5 md:gap-3 px-1"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4 }}
                 >
                   <h4 
-                    className="text-[22px] font-semibold text-[#2D241E] leading-tight transition-all duration-500"
+                    className="text-[18px] sm:text-[19px] md:text-[20px] lg:text-[22px] font-semibold text-[#2D241E] leading-tight transition-all duration-500"
                     style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 600 }}
                   >
                     {servicesData[displayTab].title}
                   </h4>
                   <p 
-                    className="text-[16px] leading-[1.6] text-[#7A6F68] max-w-[450px] transition-all duration-500"
+                    className="text-[14px] sm:text-[15px] md:text-[16px] leading-[1.6] text-[#7A6F68] max-w-[450px] transition-all duration-500"
                     style={{ fontFamily: '"Noto Sans", sans-serif' }}
                   >
                     {servicesData[displayTab].description}
                   </p>
                   <a 
                     href="#partner-with-us" 
-                    className="inline-flex items-center gap-2 text-[#2D241E] font-semibold hover:gap-3 transition-all duration-300 group"
+                    className="inline-flex items-center gap-2 text-[#2D241E] font-semibold hover:gap-3 transition-all duration-300 group text-[14px] sm:text-[15px] md:text-[16px]"
                     style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 600 }}
                   >
-                    <MoveRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    <MoveRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                     <span>Partner With Us</span>
                   </a>
                 </motion.div>

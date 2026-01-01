@@ -44,7 +44,6 @@ export default function FAQ() {
     }
   };
 
-  // ✅ Staggered title variants
   const titleContainerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -89,36 +88,36 @@ export default function FAQ() {
       </Head>
       
       <section 
-        className="bg-[#F8F3ED] py-[120px] px-8 md:px-16" 
+        className="bg-[#F8F3ED] py-12 sm:py-16 md:py-20 lg:py-24 xl:py-[120px] px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16" 
         id="faq"
         style={{ fontFamily: '"Noto Sans", sans-serif' }}
       >
         <div className="max-w-[1100px] mx-auto flex flex-col items-center">
           {/* Badge */}
           <motion.div 
-            className="mb-8"
+            className="mb-6 sm:mb-7 md:mb-8"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="bg-[#F3EDE5] px-4 py-2 rounded-full">
-              <span className="text-[13px] font-medium text-[#2D241E] tracking-wide" style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 500 }}>
+            <div className="bg-[#F3EDE5] px-3 sm:px-4 py-1.5 sm:py-2 rounded-full">
+              <span className="text-[11px] sm:text-[12px] md:text-[13px] font-medium text-[#2D241E] tracking-wide" style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 500 }}>
                 FAQ
               </span>
             </div>
           </motion.div>
 
-          {/* ✅ STAGGERED Title on scroll */}
+          {/* Staggered Title */}
           <motion.div 
-            className="text-center mb-16 max-w-[750px]"
+            className="text-center mb-10 sm:mb-12 md:mb-14 lg:mb-16 max-w-[750px] px-4"
             variants={titleContainerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
             <motion.h2 
-              className="font-display text-[52px] md:text-[64px] text-[#2D241E] mb-6 leading-[1.15] tracking-tight"
+              className="font-display text-[36px] sm:text-[42px] md:text-[48px] lg:text-[56px] xl:text-[64px] text-[#2D241E] mb-4 sm:mb-5 md:mb-6 leading-[1.15] tracking-tight"
               variants={titleItemVariants}
               style={{ fontFamily: '"Noto Sans", sans-serif', fontWeight: 700 }}
             >
@@ -126,30 +125,34 @@ export default function FAQ() {
             </motion.h2>
             
             <motion.p 
-              className="text-[#5C5550] text-[16px] md:text-[17px] leading-[1.6] max-w-[600px] mx-auto"
+              className="text-[#5C5550] text-[14px] sm:text-[15px] md:text-[16px] lg:text-[17px] leading-[1.6] max-w-[600px] mx-auto"
               variants={titleItemVariants}
               style={{ fontFamily: '"Noto Sans", sans-serif' }}
             >
-              Everything you need to know about working with us. Still have questions? Schedule a call and we'll walk you through it.
+              Everything you need to know about working with us. Still have questions? Schedule a call and we&apos;ll walk you through it.
             </motion.p>
           </motion.div>
 
-          {/* Accordion - unchanged */}
-          <div className="w-full max-w-[900px] space-y-4">
+          {/* Accordion */}
+          <div className="w-full max-w-[900px] space-y-3 sm:space-y-4">
             {faqData.map((item, index) => {
               const isOpen = openIndexes.includes(index);
               
               return (
                 <div
                   key={index}
-                  className="bg-[#F3EDE5] rounded-[20px] overflow-hidden transition-all duration-200"
+                  className="bg-[#F3EDE5] rounded-[16px] sm:rounded-[18px] md:rounded-[20px] overflow-hidden transition-all duration-200"
+                  style={{ border: 'none', outline: 'none' }}
                 >
                   <button
                     onClick={() => toggleAccordion(index)}
-                    className="w-full flex items-center justify-between px-8 py-7 text-left focus:outline-none"
+                    className="w-full flex items-center justify-between px-5 sm:px-6 md:px-7 lg:px-8 py-5 sm:py-6 md:py-7 text-left transition-all"
+                    style={{ border: 'none', outline: 'none', boxShadow: 'none' }}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${index}`}
                   >
                     <span 
-                      className="text-[18px] md:text-[20px] font-normal text-[#2D241E] pr-6 leading-[1.4]"
+                      className="text-[16px] sm:text-[17px] md:text-[18px] lg:text-[19px] xl:text-[20px] font-normal text-[#2D241E] pr-4 sm:pr-5 md:pr-6 leading-[1.4]"
                       style={{ fontFamily: '"Noto Sans", sans-serif' }}
                     >
                       {item.question}
@@ -160,13 +163,14 @@ export default function FAQ() {
                       animate={isOpen ? "open" : "closed"}
                       transition={{ duration: 0.2 }}
                     >
-                      <Plus className="w-6 h-6 text-[#2D241E]" strokeWidth={2.5} />
+                      <Plus className="w-5 h-5 sm:w-6 sm:h-6 text-[#2D241E]" strokeWidth={2.5} />
                     </motion.div>
                   </button>
 
                   <AnimatePresence>
                     {isOpen && (
                       <motion.div
+                        id={`faq-answer-${index}`}
                         variants={accordionVariants}
                         initial="hidden"
                         animate="visible"
@@ -175,7 +179,7 @@ export default function FAQ() {
                         className="overflow-hidden"
                       >
                         <div 
-                          className="px-8 pb-7 text-[#5C5550] text-[15px] md:text-[16px] leading-[1.7]"
+                          className="px-5 sm:px-6 md:px-7 lg:px-8 pb-5 sm:pb-6 md:pb-7 text-[#5C5550] text-[14px] sm:text-[15px] md:text-[16px] leading-[1.65] sm:leading-[1.7]"
                           style={{ fontFamily: '"Noto Sans", sans-serif' }}
                         >
                           {item.answer}
